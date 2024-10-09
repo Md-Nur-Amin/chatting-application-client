@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div className=' mx-64 my-12'>
+    <div className=' mx-64 my-12 '>
       {!showChat ? (
 
         <div className='border-2 mx-40 p-16 py-14 rounded-lg'>

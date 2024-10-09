@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import EmojiPicker from 'emoji-picker-react';
+import { LuSendHorizonal } from "react-icons/lu";
+import { AiOutlinePicture } from "react-icons/ai";
+import { MdEmojiEmotions } from "react-icons/md";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState('');
@@ -59,7 +62,7 @@ function Chat({ socket, username, room }) {
         <p className='bg-blue-300 rounded-3xl font-semibold p-4'>Live Chat - {username}</p>
       </div>
 
-      <div className="chat-body rounded-2xl">
+      <div className="chat-body border-2 mt-1 mr-2 rounded-2xl">
         <ScrollToBottom className="message-container">
           {messageList.map((messageContent, index) => (
             <div
@@ -85,24 +88,31 @@ function Chat({ socket, username, room }) {
         </ScrollToBottom>
       </div>
 
-      <div className="chat-footer">
-        <button onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-          😀
+      <div className="border-2 border-cyan-400  rounded-md py-2">
+
+        <button  onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+
+        <MdEmojiEmotions className=' ml-2 mr-2 text-xl'/>
+
         </button>
+
         {showEmojiPicker && (
           <div className="emoji-picker-container">
             <EmojiPicker onEmojiClick={onEmojiClick} />
           </div>
         )}
+
         <input
+        className=''
           type="text"
           value={currentMessage}
-          placeholder="Hey..."
+          placeholder="Enter your message"
           onChange={(event) => setCurrentMessage(event.target.value)}
           onKeyPress={(event) => {
             event.key === 'Enter' && sendMessage();
           }}
         />
+
         <input
           type="file"
           accept="image/*"
@@ -110,8 +120,11 @@ function Chat({ socket, username, room }) {
           style={{ display: 'none' }}
           id="image-upload"
         />
-        <button onClick={() => document.getElementById('image-upload').click()}>📷</button>
-        <button onClick={sendMessage}>&#9658;</button>
+
+        
+        <button onClick={() => document.getElementById('image-upload').click()}> <AiOutlinePicture className=' mx-2 text-xl '/> </button>
+
+        <button onClick={sendMessage} > <LuSendHorizonal className=' text-lg'/> </button>
       </div>
     </div>
   );
