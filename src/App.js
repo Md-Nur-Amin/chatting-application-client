@@ -20,16 +20,16 @@ function App() {
   };
 
   return (
-    <div className=' mx-64 my-12 '>
+    <div className=' w-full h-screen  '>
       {!showChat ? (
 
-        <div className='border-2 mx-40 p-16 py-14 rounded-lg'>
+        <div className='border-2 mx-40 my-20 p-16 py-14 rounded-lg'>
 
           <div className='mb-12'>
             <h3 className='font-bold text-3xl text-center'> Welcome to chatting application </h3>
           </div>
 
-          <div className='mx-10'>
+          <div className='mx-72 '>
 
             <div className='my-5'>
 
